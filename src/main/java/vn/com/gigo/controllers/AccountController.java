@@ -85,7 +85,7 @@ public class AccountController {
 	@PostMapping("/forgot_password/{email}")
 	public DataResponse processForgotPassword(@PathVariable(value = "email") String email) throws UnsupportedEncodingException, MessagingException {
 		String token = accountImpl.updateToken(email);
-		String resetPasswordLink = "http://localhost:3000/resetPassword/" + token;
+		String resetPasswordLink = "https://gogi-client.vercel.app/resetPassword/" + token;
 		sendEmail(email, resetPasswordLink);
 		return new DataResponse(token);
 	}
@@ -94,15 +94,15 @@ public class AccountController {
 		MimeMessage message = mailSender.createMimeMessage();
 		MimeMessageHelper helper = new MimeMessageHelper(message);
 
-		helper.setFrom("thanhhai6398@gmail.com", "Shopme Support");
+		helper.setFrom("thanhhai6398@gmail.com", "Gogi Support");
 		helper.setTo(recipientEmail);
 
-		String subject = "Here's the link to reset your password";
+		String subject = "Đây là liên kết để đặt lại mật khẩu của bạn";
 
-		String content = "<p>Hello,</p>" + "<p>You have requested to reset your password.</p>"
-				+ "<p>Click the link below to change your password:</p>" + "<p><a href=\"" + link
-				+ "\">Change my password</a></p>" + "<br>" + "<p>Ignore this email if you do remember your password, "
-				+ "or you have not made the request.</p>";
+		String content = "<p>Xin chào,</p>" + "<p>Bạn đã yêu cầu đặt lại mật khẩu của mình.</p>"
+				+ "<p>Nhấp vào liên kết bên dưới để thay đổi mật khẩu của bạn:</p>" + "<p><a href=\"" + link
+				+ "\">Thay đổi mật khẩu</a></p>" + "<br>" + "<p>Bỏ qua email này nếu bạn nhớ mật khẩu của mình, "
+				+ "hoặc bạn chưa thực hiện yêu cầu.</p>";
 
 		helper.setSubject(subject);
 

@@ -33,11 +33,11 @@ public class ContactController {
 			
 			helper.setTo("thanhhai6398@gmail.com");
 
-			String subject = "Feedback from " + feedBackInputDto.getFullName();
+			String subject = "Phản hồi từ " + feedBackInputDto.getFullName();
 
 			helper.setSubject(subject);
 
-			String content = "<h2> From " + feedBackInputDto.getEmail() + "</h2></br><p>"
+			String content = "<h3> Từ " + feedBackInputDto.getEmail() + "</h3></br><p>"
 					+ feedBackInputDto.getContent() + "</p>";
 
 			helper.setText(content, true);
