@@ -37,7 +37,7 @@ import vn.com.gigo.security.JwtTokenFilter;
 @EnableWebSecurity(debug = true)
 @RestController
 @EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true, jsr250Enabled = true)
-@CrossOrigin(value = "http://localhost:3000", allowCredentials = "true")
+@CrossOrigin(value = "https://gogi-client.vercel.app", allowCredentials = "true")
 public class ApplicationSecurity {
 
 	@Autowired
@@ -122,7 +122,7 @@ public class ApplicationSecurity {
 	@Bean
 	CorsConfigurationSource corsConfigurationSource() {
 		CorsConfiguration configuration = new CorsConfiguration();
-		configuration.setAllowedOrigins(Arrays.asList("http://localhost:3000"));
+		configuration.setAllowedOrigins(Arrays.asList("https://gogi-client.vercel.app"));
 		configuration.setAllowCredentials(true);
 		configuration.addAllowedHeader("*");
 		configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"));
